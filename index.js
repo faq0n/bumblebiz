@@ -1,7 +1,9 @@
 // save contact to csv file as test database
 import { appendFileSync } from "fs";
 import prompt from "prompt";
+import express from "express";
 
+// Object to model buisness
 class Company {
   constructor(name = "", field = "", email = "") {
     this.contactname = name;
@@ -31,8 +33,8 @@ const startPrompt = async () => {
   ];
 
   const responses = await prompt.get(questions);
-  const person = new Company(responses.name, responses.field, responses.email);
-  await person.saveToCSV();
+  const entry = new Company(responses.name, responses.field, responses.email);
+  await entry.saveToCSV();
   const { again } = await prompt.get([
     { name: "again", description: "Continue? [y to continue]" },
   ]);
@@ -40,3 +42,17 @@ const startPrompt = async () => {
   if (again.toLowerCase() === "y") 
 	await startPrompt();
 };
+
+// initialize webserver 
+const app = express();
+const port = 3000;
+
+app.get("/", async (request, response) => {
+  response.send("Welcome to Bumblebiz");
+});
+app.get("/b", async (request, response) => {
+  response.json(entry);
+});
+
+await app.listen({ port });
+console.log(`Web Server is listening at http://localhost:${port}`);
