@@ -43,6 +43,13 @@ const startPrompt = async () => {
 	await startPrompt();
 };
 
+// default profile
+const userProfile = { 
+	"myname": "Bumblebee",
+	"myfield": "Service Provider",
+	"myemail": "b2b@bumble.bee"
+};
+
 // initialize webserver 
 const app = express();
 const port = 3000;
@@ -51,7 +58,7 @@ app.get("/", async (request, response) => {
   response.send("Welcome to Bumblebiz");
 });
 app.get("/b", async (request, response) => {
-  response.json(entry);
+  response.json(userProfile);
 });
 
 await app.listen({ port });
