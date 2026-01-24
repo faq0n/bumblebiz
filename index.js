@@ -23,7 +23,7 @@ class Company {
 
 // initialise user prompt
 prompt.start();
-prompt.message = "";
+prompt.message = "Enter detail: ";
 // start main loop
 const startPrompt = async () => {
   const questions = [
@@ -42,24 +42,10 @@ const startPrompt = async () => {
   if (again.toLowerCase() === "y") 
 	await startPrompt();
 };
-
+startPrompt()
 // default profile
 const userProfile = { 
 	"myname": "Bumblebee",
 	"myfield": "Service Provider",
 	"myemail": "b2b@bumble.bee"
 };
-
-// initialize webserver 
-const app = express();
-const port = 3000;
-
-app.get("/", async (request, response) => {
-  response.send("Welcome to Bumblebiz");
-});
-app.get("/b", async (request, response) => {
-  response.json(userProfile);
-});
-
-await app.listen({ port });
-console.log(`Web Server is listening at http://localhost:${port}`);
