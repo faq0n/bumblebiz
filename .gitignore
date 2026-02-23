@@ -5,3 +5,4 @@ node_modules/
 # Ignore automatically generated direnv output
 .direnv
 contacts.csv
+contacts*
