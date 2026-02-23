@@ -1,9 +1,9 @@
 # Bumblebiz/bumblebee # 
-simple webapp to simulate bumble for buisnesses helping them to find buisness partners for their needs
+simple prompt to simulate data entering for buisnesses helping them to store buisness contacts for their needs
 
 Start local by: 
 ```
-nodemon start
+node index.js
 
 ```
 
